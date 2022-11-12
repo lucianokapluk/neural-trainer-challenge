@@ -10,7 +10,7 @@ class InitialOnboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.center,
+      alignment: Alignment.topCenter,
       fit: StackFit.expand,
       children: [image, logo, const NtExperienceText()],
     );

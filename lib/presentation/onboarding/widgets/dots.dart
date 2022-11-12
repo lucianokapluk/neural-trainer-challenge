@@ -10,6 +10,7 @@ class DotsIndicator extends StatelessWidget {
       width: 25.0,
       child: Center(
           child: Container(
+        margin: const EdgeInsets.only(top: 25),
         decoration: BoxDecoration(
           color: const Color.fromRGBO(104, 105, 104, 1),
           borderRadius: BorderRadius.circular(2),

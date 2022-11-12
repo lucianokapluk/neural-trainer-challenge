@@ -33,19 +33,23 @@ class TitleAndDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 0,
-      child: SizedBox(
-        height: 280,
+      child: Container(
+        height: 389,
+        padding: const EdgeInsets.only(top: 35, left: 25, right: 25, bottom: 25),
         child: Column(
           children: [
-            Text(
-              title.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Color.fromRGBO(22, 245, 129, 1),
-                  fontSize: 40,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.28),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: Text(
+                title.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    color: Color.fromRGBO(22, 245, 129, 1),
+                    fontSize: 40,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.28),
+              ),
             ),
             Container(
               padding: const EdgeInsets.only(left: 25, right: 25),
@@ -73,21 +77,18 @@ class NtExperienceText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 0,
-      child: SizedBox(
-        height: 200,
+      child: Container(
+        height: 276,
+        padding: const EdgeInsets.all(24),
         child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-              width: MediaQuery.of(context).size.width,
-              child: const Text(
-                "COMENZÁ A VIVIR TU",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic),
-              ),
+          children: const [
+            Text(
+              "COMENZÁ A VIVIR TU",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic),
             ),
-            const Text(
+            Text(
               "NT EXPERIENCE",
               textAlign: TextAlign.center,
               style: TextStyle(
