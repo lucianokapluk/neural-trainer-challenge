@@ -52,7 +52,7 @@ class _WellcomeStartPageState extends State<WellcomeStartPage> {
                       "Selecciona una actividad creada por el equipo de Neural Trainer o crea tu propio entrenamiento específico."),
               OnboardingPage(
                 image: NeuralImages.analizeBackground,
-                title: "analize",
+                title: "analiza",
                 description:
                     "Monitorea el desempeño de tus atletas, registra sus resultados y compártelos en tiempo real.",
               ),
