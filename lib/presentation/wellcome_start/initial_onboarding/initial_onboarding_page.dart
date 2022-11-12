@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neural_trainer/presentation/onboarding/widgets/onboarding_page.dart';
+import 'package:neural_trainer/presentation/wellcome_start/initial_onboarding/widgets/nt_experience_text.dart';
 
 class InitialOnboarding extends StatelessWidget {
   final Image image;

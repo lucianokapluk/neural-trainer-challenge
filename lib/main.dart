@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neural_trainer/presentation/onboarding/wellcome_start_page.dart';
+import 'package:neural_trainer/presentation/wellcome_start/wellcome_start_page.dart';
 
 void main() {
   runApp(const MyApp());

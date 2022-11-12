@@ -5,7 +5,7 @@ class DotsIndicator extends StatelessWidget {
   final int selectedPage;
   final int itemCount;
 
-  Widget _buildDot(int index) {
+  Widget _buildDotIndicator(int index) {
     return SizedBox(
       width: 25.0,
       child: Center(
@@ -28,7 +28,7 @@ class DotsIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List<Widget>.generate(itemCount, _buildDot),
+      children: List<Widget>.generate(itemCount, _buildDotIndicator),
     );
   }
 }
