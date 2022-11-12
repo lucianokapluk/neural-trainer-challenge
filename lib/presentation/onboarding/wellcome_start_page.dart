@@ -16,7 +16,8 @@ class _WellcomeStartPageState extends State<WellcomeStartPage> {
   Image? onboardingImage2;
   Image? onboardingImage3;
   Image? onboardingImage4;
-  final _controller = PageController(initialPage: 0);
+  int selectedPage = 0;
+  final _controller = PageController();
   @override
   void didChangeDependencies() {
     neauralLogo = Image.asset(
@@ -54,6 +55,12 @@ class _WellcomeStartPageState extends State<WellcomeStartPage> {
         alignment: Alignment.center,
         children: [
           PageView(
+            physics: const ClampingScrollPhysics(),
+            onPageChanged: (index) {
+              setState(() {
+                selectedPage = index;
+              });
+            },
             controller: _controller,
             children: [
               InitialOnboarding(image: initialOnboarding!, logo: neauralLogo!),
@@ -75,8 +82,8 @@ class _WellcomeStartPageState extends State<WellcomeStartPage> {
               ),
             ],
           ),
-          const Positioned(top: 0, child: MoveYourMindWidget()),
-          Positioned(bottom: 0, child: SignInButton(pageController: _controller))
+          selectedPage != 0 ? const Positioned(top: 0, child: MoveYourMindWidget()) : const SizedBox(),
+          Positioned(bottom: 0, child: SignInButton(selectedPage: selectedPage))
         ],
       ),
     );
@@ -90,11 +97,15 @@ class MoveYourMindWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(top: 48.0),
-      child: Text(
-        "#MOVEYOURMIND",
-        style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic),
+    return const AnimatedOpacity(
+      opacity: 1,
+      duration: Duration(milliseconds: 500),
+      child: Padding(
+        padding: EdgeInsets.only(top: 48.0),
+        child: Text(
+          "#MOVEYOURMIND",
+          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic),
+        ),
       ),
     );
   }
@@ -125,31 +136,34 @@ class BottomGradient extends StatelessWidget {
 }
 
 class SignInButton extends StatelessWidget {
-  const SignInButton({super.key, required this.pageController});
-  final PageController pageController;
+  const SignInButton({super.key, required this.selectedPage});
+  final int selectedPage;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Center(
           child: DotsIndicator(
-            controller: pageController,
+            selectedPage: selectedPage,
             itemCount: 4,
           ),
         ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Container(
-            margin: const EdgeInsets.all(25.0),
-            padding: const EdgeInsets.symmetric(vertical: 17.0),
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(22, 245, 129, 1),
-              borderRadius: BorderRadius.circular(27),
-            ),
-            child: const Text(
-              "INICIAR SESIÓN",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        InkWell(
+          onTap: () {},
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              margin: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.symmetric(vertical: 17.0),
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(22, 245, 129, 1),
+                borderRadius: BorderRadius.circular(27),
+              ),
+              child: const Text(
+                "INICIAR SESIÓN",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
             ),
           ),
         ),

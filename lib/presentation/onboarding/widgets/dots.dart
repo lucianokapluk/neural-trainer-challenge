@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DotsIndicator extends AnimatedWidget {
-  const DotsIndicator({
-    super.key,
-    required this.controller,
-    required this.itemCount,
-  }) : super(listenable: controller);
-  final PageController controller;
+class DotsIndicator extends StatelessWidget {
+  const DotsIndicator({super.key, required this.selectedPage, required this.itemCount});
+  final int selectedPage;
   final int itemCount;
 
   Widget _buildDot(int index) {
-    final idSelected = index == (controller.page?.round() ?? controller.initialPage);
-
     return SizedBox(
       width: 25.0,
       child: Center(
@@ -20,7 +14,7 @@ class DotsIndicator extends AnimatedWidget {
           color: const Color.fromRGBO(104, 105, 104, 1),
           borderRadius: BorderRadius.circular(2),
           border: Border.all(
-            color: idSelected ? const Color.fromRGBO(22, 245, 129, 1) : const Color.fromRGBO(104, 105, 104, 1),
+            color: selectedPage == index ? const Color.fromRGBO(22, 245, 129, 1) : Colors.transparent,
           ),
         ),
         height: 8,
